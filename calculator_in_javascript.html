@@ -1,0 +1,72 @@
+#Project work on JavaScript:
+#Calculator in javascript
+#Reference taken: book, internet,etc.
+<html>
+<head>
+    <title>Calculator</title>
+    <style>
+        button {
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+    <table>
+        <tr>
+            <td colspan="5"><input id="screen" type="text"></td>
+        </tr>
+        <tr>
+            <td><button onclick="addToScreen(event,7)">7</button></td>
+            <td><button onclick="addToScreen(event,8)">8</button></td>
+            <td><button onclick="addToScreen(event,9)">9</button></td>
+            <td><button onclick="addToScreen(event,'/')">/</button></td>
+            <td><button onclick="clearScreen(event)">C</button></td>
+        </tr>
+        <tr>
+            <td><button onclick="addToScreen(event,4)">4</button></td>
+            <td><button onclick="addToScreen(event,5)">5</button></td>
+            <td><button onclick="addToScreen(event,6)">6</button></td>
+            <td><button onclick="handleBackspace(event)"><-</button></td>
+            <td><button onclick="addToScreen(event,'*')">*</button></td>
+        </tr>
+        <tr>
+            <td><button onclick="addToScreen(event,1)">1</button></td>
+            <td><button onclick="addToScreen(event,2)">2</button></td>
+            <td><button onclick="addToScreen(event,3)">3</button></td>
+            <td><button onclick="addToScreen(event,'+')">+</button></td>
+            <td><button onclick="addToScreen(event,'-')">-</button></td>
+        </tr>
+        <tr>
+            <td><button onclick="addToScreen(event,0)">0</button></td>
+            <td><button onclick="addToScreen(event,'.')">.</button></td>
+            <td><button onclick="addToScreen(event,'00')">00</button></td>
+            <td colspan="2"><button onclick="findResult(event)">=</button></td>
+        </tr>
+    </table>
+    <script>
+        function addToScreen(event, character) {
+            var s = document.querySelector("#screen");
+            s.value += character; // Concatenating old value and new character
+        }
+        
+        function findResult(event) {
+            var s = document.querySelector("#screen");
+            try {
+                s.value = eval(s.value); // Evaluates the expression
+            } catch (e) {
+                s.value = "Error"; // Handle invalid expressions
+            }
+        }
+
+        function handleBackspace(event) {
+            var s = document.querySelector("#screen");
+            s.value = s.value.slice(0, -1);
+        }
+
+        function clearScreen(event) {
+            var s = document.querySelector("#screen");
+            s.value = "";
+        }
+    </script>
+</body>
+</html>
